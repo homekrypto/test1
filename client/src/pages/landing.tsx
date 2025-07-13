@@ -76,7 +76,6 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation onLoginClick={() => setIsLoginModalOpen(true)} />
-      
       {/* Hero Section */}
       <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
         <div 
@@ -148,7 +147,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
       {/* Featured Properties */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -224,9 +222,8 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
       {/* Value Propositions */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#09090b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why Choose PropertyGlobal?</h2>
@@ -260,7 +257,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
       {/* Agent Subscription Plans */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -328,7 +324,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -382,7 +377,6 @@ export default function Landing() {
           </div>
         </div>
       </footer>
-
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
     </div>
   );
