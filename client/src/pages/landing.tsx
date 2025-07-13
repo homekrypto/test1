@@ -17,7 +17,11 @@ export default function Landing() {
     queryKey: ["/api/properties"],
     queryFn: async () => {
       const response = await fetch("/api/properties?limit=6");
-      return response.json();
+      if (!response.ok) {
+        throw new Error('Failed to fetch properties');
+      }
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
     },
   });
 
@@ -154,7 +158,7 @@ export default function Landing() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProperties.slice(0, 3).map((property: any) => (
+            {Array.isArray(featuredProperties) && featuredProperties.slice(0, 3).map((property: any) => (
               <Card key={property.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                 <div className="relative">
                   <img 
