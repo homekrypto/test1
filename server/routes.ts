@@ -145,7 +145,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
       console.error("Error creating property:", error);
-      res.status(500).json({ message: "Failed to create property", error: error.message });
+      res.status(500).json({ message: "Failed to create property", error: (error as Error).message });
     }
   });
 
