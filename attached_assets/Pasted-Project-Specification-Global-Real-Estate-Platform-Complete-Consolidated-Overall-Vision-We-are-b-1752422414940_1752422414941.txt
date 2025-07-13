@@ -1,0 +1,148 @@
+Project Specification: Global Real Estate Platform (Complete & Consolidated)
+Overall Vision
+We are building a sophisticated, global real estate platform designed to connect agents and developers with international buyers . The user experience will be divided into two main parts: a public-facing website for property discovery and a private, secure dashboard for agents to manage their listings and business.
+
+Part 1: The Public Website (For Buyers)
+This is the global shop window for all properties. It's designed for speed, powerful search, and providing rich, detailed information.
+1.1. The Homepage
+The homepage is the primary entry point, designed to immediately engage potential buyers. It will feature:
+* A visually stunning hero section with a compelling headline and background imagery.
+* A prominent search bar allowing users to immediately search by location (city or country).
+* A curated section for "Featured Listings" to highlight premium properties.
+* Sections showcasing the platform's value, such as "Global Reach" and "Verified Agents."
+1.2. Property Search & Results Page
+This is the core engine of the site. When a user performs a search, they are taken to a results page with two main views they can toggle between:
+* Grid View: A clean, scrollable grid of property cards. Each card shows a primary photo, price, location, and key stats like bedrooms and bathrooms.
+* Map View: An interactive map displaying all search results as pins. Clicking a pin reveals a small pop-up summary of the property.
+To refine their search, users will have a comprehensive filter sidebar with options for price range, property type, number of bedrooms/bathrooms, and a detailed checklist of features and amenities (like "Swimming Pool" or "Gym").
+1.3. Property Detail Page
+This is the dedicated page for a single listing, designed to provide all possible information. It includes:
+* A high-quality photo gallery and embedded video or 360° virtual tours.
+* A detailed description section with rich text formatting.
+* A clear summary of all property metrics: price, area, number of rooms, year built, energy rating, etc.
+* A comprehensive checklist of all features and amenities.
+* An embedded map showing the precise location.
+* An agent contact card displaying the listing agent's photo and details, along with a form for potential buyers to send an inquiry.
+
+Part 2: The Agent Dashboard (Private & Secure)
+After subscribing, agents redirected to get access to their private dashboard. This is their mission control center for managing their business on the platform.
+2.1. Agent Onboarding
+Before accessing the dashboard, new agents go through a one-time, multi-step onboarding process:
+- [ ] Plan Selection: Choose a subscription package (e.g., Bronze 5 listings 40 USD a month , Silver 10 listings 60 USD a month , Gold 20 listings 80 USD a month - option to switch also to annual plan with 10% saving, and custome plan with demand which can be discussed with sales representative ). Upgrade or downgrade demand how many listing they are using in current plan from dashboard accessible after log in to panel 
+    1. Registration: Create an account with their email and password. and text ‚ by registering you accept the T&C. 
+1. Profile Setup: Optionally provide their photo, agency logo, and contact details.
+2. Payment: Securely enter their billing information to activate their subscription.
+3. Payment with integrated checkout on the 4step with stripe. After susesfull payment redirected to dashboard. 
+2.2. Main Dashboard View
+Upon login, the agent sees a summary of their activity.
+* For new agents, it's an "empty state" that welcomes them and guides them to add their first listing or complete their profile.
+* For active agents, it's a dynamic view showing key stats like their total active listings, recent leads, and property views.
+* They have button to redirection to create new listing, 
+* They have a listing of current listing which can be edited or deleted and status can be change from active to pending or archived (mark required as sold or removed. And in the main website search still visible but with indication sold or removed ) 
+2.3. The "Add Listing" Form - A Detailed Functional Description
+This is the most important feature of the dashboard. It's a comprehensive, multi-step "wizard" that guides the agent through creating a professional-grade listing. The form is designed to work seamlessly on both desktop and mobile devices and includes a progress indicator and an auto-save draft feature.
+Here is a step-by-step breakdown of the wizard:
+Step 1: General Information This first step captures the essential identity of the property. The agent will provide:
+* A concise Property Title (e.g., "Luxury Downtown Penthouse with City Views").
+* A detailed Description, using a rich text editor that allows for bolding, bullet points, and paragraphs to make the text engaging.
+* The Listing Type, chosen from a dropdown list (e.g., For Sale, For Rent, Pre-Sale).
+* The Property Type, selected from a comprehensive list (e.g., Apartment, Villa, Commercial, Land). This choice may dynamically change which fields appear in later steps.
+Step 2: Location Details This step pinpoints the property's location for accurate mapping and search. The agent will:
+* Select the Country from a dropdown list, which can be auto-detected for convenience.
+* Enter the City and full Street Address. This field will use Google Maps integration to suggest verified addresses as the agent types.
+* Once an address is selected, the State/Province and Postal Code fields will be auto-filled.
+* A map preview will instantly show a pin at the entered address, which the agent can manually drag for fine-tuned accuracy. The precise GPS coordinates are automatically saved in the background.
+Step 3: Price & Financials This section covers all monetary aspects of the listing. The agent will:
+* Enter the main Price.
+* Select the Currency from a dropdown of all major world currencies (e.g., USD, EUR, JPY).
+* Specify the Payment Frequency (e.g., One-time for sales, Monthly for rentals).
+* Use simple "Yes/No" toggles for options like Is Negotiable? and Accepts Crypto?.
+* If crypto is accepted, a multi-select box will appear, allowing them to choose which cryptocurrencies they accept (e.g., BTC, ETH).
+* There are also optional fields for Maintenance Fees and Property Taxes.
+Step 4: Property Metrics This step details the physical characteristics and size of the property. The agent will input:
+* The Total Area, Living Area, and Lot Size, with a simple toggle to switch between square meters (sqm) and square feet (sqft).
+* The Year Built.
+* Numbers for Bedrooms, Bathrooms, Floors, and Parking Spaces.
+* The Furnishing Status, selected from Yes, Partially, or No.
+* Other relevant details like the Floor Number (for apartments), whether there is Elevator Access, the primary View (Sea, Mountain, City), and the Energy Efficiency Rating.
+Step 5: Features & Amenities This is where the agent highlights the property's key selling points. They will be presented with two large checklists:
+* Features: A comprehensive list of property features they can check off, such as Balcony, Swimming Pool, Smart Home, Pet Friendly, Gated Community, etc.
+* Nearby Places: A list of nearby points of interest to check off, including School, Hospital, Metro Station, Beach, Shopping Mall, etc.
+Step 6: Media Uploads Visuals are critical, so this step allows for rich media. The agent will:
+* Upload a required Cover Image, which will be the primary photo for the listing.
+* Upload multiple additional Gallery Images using a modern drag-and-drop interface.
+* Optionally provide a URL for a Video Tour (from YouTube or Vimeo) or a Virtual Tour (360º).
+* Optionally upload an image file for the Floor Plan.
+Step 7: Availability & Legal This section covers the legal status and availability of the property. The agent can:
+* Select the Available From date using a calendar.
+* Choose the Ownership Type from a list (e.g., Freehold, Leasehold).
+* Use "Yes/No" toggles to indicate if the Title Deed is Available and if the Listing is Exclusive to their agency.
+Step 8: Agent & Agency Information To ensure buyers know who to contact, this section displays the agent's details.
+* The Agent Name, Phone Number, and Email will be automatically filled from their logged-in profile.
+* They can optionally add their Agency Name, professional License Number, and a link for WhatsApp.
+* They can also select the Languages Spoken from a multi-select list.
+Step 9: Review & Publishing This is the final step before the listing goes live. The agent will see:
+* A full preview of their listing, showing how it will look to the public, with all the information they've entered neatly organized.
+* The ability to set the initial Listing Status (Draft or Published).
+* A mandatory checkbox to confirm they accept the platform's terms and conditions.
+* Two final action buttons: "Save as Draft" to save their work without making it public, and "Publish Listing" to make it live on the site.
+2.4. Listings Management
+From their dashboard, agents can view a table of all their listings. From here, they can see key stats, and easily edit, delete, or archive any of their properties.
+2.5. Lead Management
+Agents have a dedicated section to view all inquiries (leads) submitted by potential buyers through their listing pages. They can see the buyer's contact information and the property they were interested in.
+2.6. Account Management
+Accesible from login button in the main page with login:
+LOGIN COMPONENT – VISUAL + INTERACTION SPEC
+
+🖼️ 1. LAYOUT OVERVIEW
+📱 Mobile:
+* Fullscreen modal (slide-up or fade-in)
+* Sticky close ✕ in top-right
+* Vertical stacking for social buttons
+* Larger input fields and buttons
+💻 Desktop:
+* Centered modal (popup box)
+* Blurred background overlay
+* Horizontal alignment of social buttons
+* Smaller form width (~400px)
+
+🧩 2. COMPONENT SECTIONS
+pgsql
+CopyEdit
++------------------------------------------------+
+| ✕  |                  Sign In                  |
+|------------------------------------------------|
+|  [Email or Username]                           |
+|  [Password        ]  (👁 Show)                 |
+|  [☐] Remember Me      [Forgot Password?]       |
+|------------------------------------------------|
+|  [🔵 Sign in with Google]                      |
+|  [🟦 Sign in with Facebook]                   |
+|------------------------------------------------|
+|  [Login] 🔒                                     |
+|------------------------------------------------|
+|  Don’t have an account? [Create one]           |
++------------------------------------------------+
+✅ Fully responsive, mobile-first with breakpoints ✅ Adaptive for dark and light mode ✅ Smooth transitions (framer-motion, CSS transitions) ✅ Native keyboard & screen reader accessibility
+
+🎨 3. STYLE GUIDE
+Element	Desktop	Mobile
+Modal Width	400–500px	Full width
+Padding	2rem	1rem
+Button Size	Medium	Large touch targets
+Font	Inter, 16px	Inter, 18px
+Colors	Dark on Light / Light on Dark	Toggle via CSS variables
+Animation	Fade-in, Slide-up	Slide-up on mobile
+
+🧠 4. BEHAVIOR & LOGIC
+* ✅ Form validation (email format, required fields)
+* ❌ Disable submit until fields valid
+* 🔃 Show loading spinner on submit
+* ❗ Inline error messages (Invalid credentials)
+* 🎉 Success redirect (e.g., /dashboard)
+* ⌨️ Enter key = submit form
+* 🔐 Support for JWT, API token, OAuth flows
+
+This section allows agents to:
+* Edit their public profile information (name, photo, bio, etc.).
+* View their current subscription plan and manage their billing information.
