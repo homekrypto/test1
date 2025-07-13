@@ -1265,30 +1265,6 @@ export default function ListingWizard() {
                     type="submit"
                     className="bg-primary hover:bg-blue-700"
                     disabled={createPropertyMutation.isPending}
-                    onClick={(e) => {
-                      console.log('Navigation Publish button clicked');
-                      console.log('Form is valid:', form.formState.isValid);
-                      console.log('Form errors:', form.formState.errors);
-                      
-                      // Test direct API call
-                      e.preventDefault();
-                      const testData = {
-                        title: "Test Property",
-                        description: "Test description",
-                        listingType: "for_sale",
-                        propertyType: "apartment",
-                        country: "USA",
-                        city: "New York",
-                        streetAddress: "123 Test St",
-                        price: "100000",
-                        currency: "USD",
-                        paymentFrequency: "one_time",
-                        areaUnit: "sqm",
-                        status: "active"
-                      };
-                      console.log('Testing direct submission with:', testData);
-                      createPropertyMutation.mutateAsync(testData);
-                    }}
                   >
                     {createPropertyMutation.isPending ? 'Publishing...' : 'Publish Listing'}
                   </Button>
