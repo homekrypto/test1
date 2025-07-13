@@ -351,7 +351,7 @@ export default function ListingWizard({ editMode = false, initialData }: Listing
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Listing Type *</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select listing type" />
@@ -374,7 +374,7 @@ export default function ListingWizard({ editMode = false, initialData }: Listing
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Property Type *</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select property type" />
@@ -527,7 +527,7 @@ export default function ListingWizard({ editMode = false, initialData }: Listing
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Currency</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select currency" />
