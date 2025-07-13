@@ -1266,11 +1266,6 @@ export default function ListingWizard({ editMode = false, initialData }: Listing
                 type="submit"
                 className="w-full bg-primary hover:bg-blue-700"
                 disabled={createPropertyMutation.isPending}
-                onClick={(e) => {
-                  console.log('Publish button clicked');
-                  console.log('Form is valid:', form.formState.isValid);
-                  console.log('Form errors:', form.formState.errors);
-                }}
               >
                 {createPropertyMutation.isPending ? 'Publishing...' : 'Publish Listing'}
               </Button>
@@ -1369,27 +1364,6 @@ export default function ListingWizard({ editMode = false, initialData }: Listing
                     type="submit"
                     className="bg-primary hover:bg-blue-700"
                     disabled={createPropertyMutation.isPending}
-                    onClick={() => {
-                      console.log('Publish button clicked!');
-                      console.log('Form state:', form.formState);
-                      console.log('Current form values:', form.getValues());
-                      console.log('Form errors:', form.formState.errors);
-                      
-                      // Check if required fields are filled
-                      const values = form.getValues();
-                      const requiredFields = ['title', 'country', 'city', 'streetAddress', 'price'];
-                      const missingFields = requiredFields.filter(field => !values[field]);
-                      
-                      if (missingFields.length > 0) {
-                        console.log('Missing required fields:', missingFields);
-                        toast({
-                          title: "Missing Required Fields",
-                          description: `Please fill in: ${missingFields.join(', ')}`,
-                          variant: "destructive",
-                        });
-                        return;
-                      }
-                    }}
                   >
                     {createPropertyMutation.isPending ? 'Publishing...' : 'Publish Listing'}
                   </Button>
