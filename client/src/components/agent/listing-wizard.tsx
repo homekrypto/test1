@@ -48,6 +48,12 @@ const listingSchema = insertPropertySchema.extend({
   floors: z.string().optional(),
   parkingSpaces: z.string().optional(),
   floorNumber: z.string().optional(),
+  furnishingStatus: z.string().optional(),
+  view: z.string().optional(),
+  agencyName: z.string().optional(),
+  licenseNumber: z.string().optional(),
+  phoneNumber: z.string().optional(),
+  whatsappNumber: z.string().optional(),
 }).omit({
   agentId: true, // This will be added on the backend
 });
@@ -75,6 +81,7 @@ export default function ListingWizard() {
 
   const form = useForm<ListingFormData>({
     resolver: zodResolver(listingSchema),
+    mode: "onBlur",
     defaultValues: {
       title: "",
       description: "",
@@ -83,6 +90,8 @@ export default function ListingWizard() {
       country: "",
       city: "",
       streetAddress: "",
+      stateProvince: "",
+      postalCode: "",
       price: "",
       currency: "USD",
       paymentFrequency: "one_time",
@@ -92,7 +101,6 @@ export default function ListingWizard() {
       hasElevator: false,
       titleDeedAvailable: false,
       exclusiveListing: false,
-      // Add missing default values for number fields
       yearBuilt: "",
       bedrooms: "",
       bathrooms: "",
@@ -106,6 +114,12 @@ export default function ListingWizard() {
       propertyTaxes: "",
       latitude: "",
       longitude: "",
+      furnishingStatus: "",
+      view: "",
+      agencyName: "",
+      licenseNumber: "",
+      phoneNumber: "",
+      whatsappNumber: "",
     },
   });
 
@@ -248,7 +262,7 @@ export default function ListingWizard() {
                 <FormItem>
                   <FormLabel>Property Title *</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., Luxury Downtown Penthouse with City Views" {...field} />
+                    <Input placeholder="e.g., Luxury Downtown Penthouse with City Views" value={field.value || ""} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -265,7 +279,8 @@ export default function ListingWizard() {
                     <Textarea 
                       placeholder="Describe your property in detail..."
                       rows={6}
-                      {...field} 
+                      value={field.value || ""} 
+                      onChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
