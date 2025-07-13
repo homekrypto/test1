@@ -74,7 +74,7 @@ export default function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Navigation onLoginClick={() => setIsLoginModalOpen(true)} />
       {/* Hero Section */}
       <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
@@ -96,7 +96,7 @@ export default function Landing() {
             </p>
             
             {/* Search Bar */}
-            <div className="bg-white rounded-2xl p-4 shadow-2xl max-w-2xl">
+            <div className="bg-card rounded-2xl p-4 shadow-2xl max-w-2xl">
               <div className="flex flex-col lg:flex-row gap-4">
                 <div className="flex-1">
                   <Input 
@@ -105,7 +105,7 @@ export default function Landing() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg"
+                    className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground"
                   />
                 </div>
                 <Button 
@@ -117,7 +117,7 @@ export default function Landing() {
                 </Button>
               </div>
               <div className="flex flex-wrap gap-2 mt-3">
-                <span className="text-sm text-gray-600">Popular:</span>
+                <span className="text-sm text-muted-foreground">Popular:</span>
                 <button 
                   onClick={() => setSearchQuery("New York")}
                   className="text-sm text-primary hover:underline"
@@ -148,16 +148,16 @@ export default function Landing() {
         </div>
       </section>
       {/* Featured Properties */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Featured Properties</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Handpicked premium properties from our verified agents worldwide</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Featured Properties</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Handpicked premium properties from our verified agents worldwide</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.isArray(featuredProperties) && featuredProperties.slice(0, 3).map((property: any) => (
-              <Card key={property.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+              <Card key={property.id} className="bg-card rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                 <div className="relative">
                   <img 
                     src={property.coverImage || `https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop`}
@@ -178,12 +178,12 @@ export default function Landing() {
                       }).format(property.price)}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{property.title}</h3>
-                  <p className="text-gray-600 mb-4 flex items-center">
+                  <h3 className="text-xl font-semibold text-card-foreground mb-2">{property.title}</h3>
+                  <p className="text-muted-foreground mb-4 flex items-center">
                     <MapPin className="w-4 h-4 mr-1" />
                     {property.city}, {property.country}
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                     {property.bedrooms && (
                       <span className="flex items-center">
                         <Bed className="w-4 h-4 mr-1" />
@@ -223,54 +223,54 @@ export default function Landing() {
         </div>
       </section>
       {/* Value Propositions */}
-      <section className="py-16 bg-[#ffffff]">
+      <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why Choose PropertyGlobal?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Your trusted partner in international real estate</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Why Choose PropertyGlobal?</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Your trusted partner in international real estate</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center p-8">
+            <Card className="text-center p-8 bg-card">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <Globe className="text-white text-2xl w-8 h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Global Reach</h3>
-              <p className="text-gray-600">Access premium properties in over 50 countries with verified international agents.</p>
+              <h3 className="text-xl font-semibold text-card-foreground mb-4">Global Reach</h3>
+              <p className="text-muted-foreground">Access premium properties in over 50 countries with verified international agents.</p>
             </Card>
             
-            <Card className="text-center p-8">
+            <Card className="text-center p-8 bg-card">
               <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Shield className="text-white text-2xl w-8 h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Verified Agents</h3>
-              <p className="text-gray-600">All our agents are thoroughly vetted and certified professionals you can trust.</p>
+              <h3 className="text-xl font-semibold text-card-foreground mb-4">Verified Agents</h3>
+              <p className="text-muted-foreground">All our agents are thoroughly vetted and certified professionals you can trust.</p>
             </Card>
             
-            <Card className="text-center p-8">
+            <Card className="text-center p-8 bg-card">
               <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <TrendingUp className="text-white text-2xl w-8 h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Market Insights</h3>
-              <p className="text-gray-600">Get real-time market data and trends to make informed investment decisions.</p>
+              <h3 className="text-xl font-semibold text-card-foreground mb-4">Market Insights</h3>
+              <p className="text-muted-foreground">Get real-time market data and trends to make informed investment decisions.</p>
             </Card>
           </div>
         </div>
       </section>
       {/* Agent Subscription Plans */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Agent Subscription Plans</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Choose the perfect plan to showcase your properties globally</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Agent Subscription Plans</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Choose the perfect plan to showcase your properties globally</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {subscriptionPlans.map((plan, index) => (
               <Card 
                 key={plan.name}
-                className={`relative hover:shadow-2xl transition-all duration-300 ${
-                  plan.popular ? 'border-2 border-primary scale-105' : 'border-2 border-gray-200'
+                className={`relative hover:shadow-2xl transition-all duration-300 bg-card ${
+                  plan.popular ? 'border-2 border-primary scale-105' : 'border-2 border-border'
                 }`}
               >
                 {plan.popular && (
@@ -282,12 +282,12 @@ export default function Landing() {
                 )}
                 <CardContent className="p-8">
                   <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                    <p className="text-gray-600 mb-4">{plan.description}</p>
-                    <div className={`text-4xl font-bold mb-2 ${plan.popular ? 'text-primary' : 'text-gray-900'}`}>
-                      ${plan.price}<span className="text-lg font-normal text-gray-600">/month</span>
+                    <h3 className="text-2xl font-bold text-card-foreground mb-2">{plan.name}</h3>
+                    <p className="text-muted-foreground mb-4">{plan.description}</p>
+                    <div className={`text-4xl font-bold mb-2 ${plan.popular ? 'text-primary' : 'text-card-foreground'}`}>
+                      ${plan.price}<span className="text-lg font-normal text-muted-foreground">/month</span>
                     </div>
-                    <p className="text-sm text-gray-500">Save 10% with annual billing</p>
+                    <p className="text-sm text-muted-foreground">Save 10% with annual billing</p>
                   </div>
                   
                   <ul className="space-y-4 mb-8">
@@ -296,7 +296,7 @@ export default function Landing() {
                         <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3">
                           <span className="text-white text-xs">✓</span>
                         </div>
-                        <span>{feature}</span>
+                        <span className="text-card-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -305,7 +305,7 @@ export default function Landing() {
                     className={`w-full ${
                       plan.popular 
                         ? 'bg-primary text-white hover:bg-blue-700' 
-                        : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                     }`}
                     onClick={() => setIsLoginModalOpen(true)}
                   >
@@ -317,7 +317,7 @@ export default function Landing() {
           </div>
           
           <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">Need more listings? Contact our sales team for a custom plan.</p>
+            <p className="text-muted-foreground mb-4">Need more listings? Contact our sales team for a custom plan.</p>
             <Button variant="link" className="text-primary hover:underline font-semibold">
               Contact Sales
             </Button>
@@ -325,52 +325,52 @@ export default function Landing() {
         </div>
       </section>
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-secondary text-secondary-foreground py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-2xl font-bold mb-6">PropertyGlobal</h3>
-              <p className="text-gray-400 mb-6">Your trusted partner in international real estate investment and property discovery.</p>
+              <p className="text-muted-foreground mb-6">Your trusted partner in international real estate investment and property discovery.</p>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold mb-6">Properties</h4>
               <ul className="space-y-3">
-                <li><Link href="/search" className="text-gray-400 hover:text-white transition-colors duration-200">Buy Properties</Link></li>
-                <li><Link href="/search?listingType=for_rent" className="text-gray-400 hover:text-white transition-colors duration-200">Rent Properties</Link></li>
-                <li><Link href="/search?propertyType=commercial" className="text-gray-400 hover:text-white transition-colors duration-200">Commercial</Link></li>
+                <li><Link href="/search" className="text-muted-foreground hover:text-primary transition-colors duration-200">Buy Properties</Link></li>
+                <li><Link href="/search?listingType=for_rent" className="text-muted-foreground hover:text-primary transition-colors duration-200">Rent Properties</Link></li>
+                <li><Link href="/search?propertyType=commercial" className="text-muted-foreground hover:text-primary transition-colors duration-200">Commercial</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold mb-6">For Agents</h4>
               <ul className="space-y-3">
-                <li><button onClick={() => setIsLoginModalOpen(true)} className="text-gray-400 hover:text-white transition-colors duration-200">Agent Dashboard</button></li>
-                <li><button className="text-gray-400 hover:text-white transition-colors duration-200">Pricing Plans</button></li>
-                <li><button className="text-gray-400 hover:text-white transition-colors duration-200">Support</button></li>
+                <li><button onClick={() => setIsLoginModalOpen(true)} className="text-muted-foreground hover:text-primary transition-colors duration-200">Agent Dashboard</button></li>
+                <li><button className="text-muted-foreground hover:text-primary transition-colors duration-200">Pricing Plans</button></li>
+                <li><button className="text-muted-foreground hover:text-primary transition-colors duration-200">Support</button></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold mb-6">Support</h4>
               <ul className="space-y-3">
-                <li><button className="text-gray-400 hover:text-white transition-colors duration-200">Help Center</button></li>
-                <li><button className="text-gray-400 hover:text-white transition-colors duration-200">Contact Us</button></li>
-                <li><button className="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</button></li>
+                <li><button className="text-muted-foreground hover:text-primary transition-colors duration-200">Help Center</button></li>
+                <li><button className="text-muted-foreground hover:text-primary transition-colors duration-200">Contact Us</button></li>
+                <li><button className="text-muted-foreground hover:text-primary transition-colors duration-200">Privacy Policy</button></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="border-t border-border mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400">© 2024 PropertyGlobal. All rights reserved.</p>
+              <p className="text-muted-foreground">© 2024 PropertyGlobal. All rights reserved.</p>
               <div className="flex items-center space-x-6 mt-4 md:mt-0">
-                <span className="text-gray-400">Available currencies:</span>
+                <span className="text-muted-foreground">Available currencies:</span>
                 <div className="flex space-x-2">
-                  <span className="bg-gray-800 px-3 py-1 rounded text-sm">USD</span>
-                  <span className="bg-gray-800 px-3 py-1 rounded text-sm">EUR</span>
-                  <span className="bg-gray-800 px-3 py-1 rounded text-sm">GBP</span>
-                  <span className="bg-gray-800 px-3 py-1 rounded text-sm">JPY</span>
+                  <span className="bg-accent px-3 py-1 rounded text-sm text-accent-foreground">USD</span>
+                  <span className="bg-accent px-3 py-1 rounded text-sm text-accent-foreground">EUR</span>
+                  <span className="bg-accent px-3 py-1 rounded text-sm text-accent-foreground">GBP</span>
+                  <span className="bg-accent px-3 py-1 rounded text-sm text-accent-foreground">JPY</span>
                 </div>
               </div>
             </div>

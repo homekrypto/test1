@@ -66,12 +66,12 @@ export default function SearchPage() {
   }, [filters]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Search Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-card rounded-2xl shadow-lg p-6 mb-8">
           <div className="flex flex-col lg:flex-row items-center gap-4">
             <div className="flex-1">
               <Input 
@@ -79,7 +79,7 @@ export default function SearchPage() {
                 placeholder="Search by location..." 
                 value={filters.location}
                 onChange={(e) => setFilters(prev => ({ ...prev, location: e.target.value }))}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg"
+                className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground"
               />
             </div>
             <div className="flex items-center gap-4">

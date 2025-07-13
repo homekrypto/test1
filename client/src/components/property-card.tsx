@@ -44,7 +44,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   };
 
   return (
-    <Card className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+    <Card className="bg-card rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
       <div className="relative">
         <img 
           src={property.coverImage || `https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop`}
@@ -70,16 +70,16 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           </span>
         </div>
         
-        <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+        <h3 className="text-xl font-semibold text-card-foreground mb-2 line-clamp-2">
           {property.title}
         </h3>
         
-        <p className="text-gray-600 mb-4 flex items-center">
+        <p className="text-muted-foreground mb-4 flex items-center">
           <MapPin className="w-4 h-4 mr-1" />
           {property.city}, {property.country}
         </p>
         
-        <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
           {property.bedrooms && (
             <span className="flex items-center">
               <Bed className="w-4 h-4 mr-1" />

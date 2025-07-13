@@ -110,10 +110,10 @@ export default function SearchFilters({ filters, onFiltersChange, className }: S
   };
 
   return (
-    <Card className={cn("bg-white rounded-2xl shadow-lg", className)}>
+    <Card className={cn("bg-card rounded-2xl shadow-lg", className)}>
       <CardContent className="p-6">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-lg font-semibold text-gray-900">Filter Properties</h3>
+          <h3 className="text-lg font-semibold text-card-foreground">Filter Properties</h3>
           <Button variant="outline" size="sm" onClick={clearFilters}>
             Clear All
           </Button>
@@ -122,7 +122,7 @@ export default function SearchFilters({ filters, onFiltersChange, className }: S
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-6">
           {/* Price Range */}
           <div className="lg:col-span-2">
-            <Label className="block text-sm font-medium text-gray-700 mb-2">Price Range</Label>
+            <Label className="block text-sm font-medium text-card-foreground mb-2">Price Range</Label>
             <div className="grid grid-cols-2 gap-2">
               <Input
                 placeholder="Min Price"
