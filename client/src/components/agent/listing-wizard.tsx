@@ -143,17 +143,18 @@ export default function ListingWizard() {
     console.log('Form errors:', form.formState.errors);
     
     try {
-      // Convert string numbers to actual numbers where needed
+      // Keep data as strings for backend validation, ensure required fields
       const processedData = {
         ...data,
-        price: parseFloat(data.price),
-        totalArea: data.totalArea ? parseFloat(data.totalArea) : undefined,
-        livingArea: data.livingArea ? parseFloat(data.livingArea) : undefined,
-        lotSize: data.lotSize ? parseFloat(data.lotSize) : undefined,
-        latitude: data.latitude ? parseFloat(data.latitude) : undefined,
-        longitude: data.longitude ? parseFloat(data.longitude) : undefined,
-        maintenanceFees: data.maintenanceFees ? parseFloat(data.maintenanceFees) : undefined,
-        propertyTaxes: data.propertyTaxes ? parseFloat(data.propertyTaxes) : undefined,
+        price: data.price.toString(),
+        paymentFrequency: data.paymentFrequency || "one_time",
+        totalArea: data.totalArea || undefined,
+        livingArea: data.livingArea || undefined,
+        lotSize: data.lotSize || undefined,
+        latitude: data.latitude || undefined,
+        longitude: data.longitude || undefined,
+        maintenanceFees: data.maintenanceFees || undefined,
+        propertyTaxes: data.propertyTaxes || undefined,
         features: selectedFeatures,
         nearbyPlaces: selectedNearbyPlaces,
       };
@@ -1279,8 +1280,9 @@ export default function ListingWizard() {
                         country: "USA",
                         city: "New York",
                         streetAddress: "123 Test St",
-                        price: 100000,
+                        price: "100000",
                         currency: "USD",
+                        paymentFrequency: "one_time",
                         areaUnit: "sqm",
                         status: "active"
                       };
