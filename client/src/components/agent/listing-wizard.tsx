@@ -335,7 +335,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Country *</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., United States" {...field} />
+                      <Input placeholder="e.g., United States" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -349,7 +349,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>City *</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., New York" {...field} />
+                      <Input placeholder="e.g., New York" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -364,7 +364,7 @@ export default function ListingWizard() {
                 <FormItem>
                   <FormLabel>Street Address *</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., 123 Main Street, Apt 4B" {...field} />
+                    <Input placeholder="e.g., 123 Main Street, Apt 4B" value={field.value || ""} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -379,7 +379,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>State/Province</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., New York" {...field} />
+                      <Input placeholder="e.g., New York" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -393,7 +393,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Postal Code</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., 10001" {...field} />
+                      <Input placeholder="e.g., 10001" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -411,7 +411,7 @@ export default function ListingWizard() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Latitude" {...field} />
+                        <Input placeholder="Latitude" value={field.value || ""} onChange={field.onChange} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -422,7 +422,7 @@ export default function ListingWizard() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Longitude" {...field} />
+                        <Input placeholder="Longitude" value={field.value || ""} onChange={field.onChange} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -443,7 +443,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Price *</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 500000" {...field} />
+                      <Input type="number" placeholder="e.g., 500000" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -565,7 +565,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Maintenance Fees (Optional)</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 200" {...field} />
+                      <Input type="number" placeholder="e.g., 200" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -579,7 +579,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Property Taxes (Optional)</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 5000" {...field} />
+                      <Input type="number" placeholder="e.g., 5000" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -600,7 +600,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Total Area</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 120" {...field} />
+                      <Input type="number" placeholder="e.g., 120" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -614,7 +614,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Living Area</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 100" {...field} />
+                      <Input type="number" placeholder="e.g., 100" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -628,7 +628,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Lot Size</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 200" {...field} />
+                      <Input type="number" placeholder="e.g., 200" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -666,7 +666,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Year Built</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 2020" {...field} />
+                      <Input type="number" placeholder="e.g., 2020" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -680,7 +680,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Bedrooms</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 3" {...field} />
+                      <Input type="number" placeholder="e.g., 3" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -694,7 +694,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Bathrooms</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 2" {...field} />
+                      <Input type="number" placeholder="e.g., 2" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -708,7 +708,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Floors</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 2" {...field} />
+                      <Input type="number" placeholder="e.g., 2" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -724,7 +724,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Parking Spaces</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 1" {...field} />
+                      <Input type="number" placeholder="e.g., 1" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -761,7 +761,7 @@ export default function ListingWizard() {
                   <FormItem>
                     <FormLabel>Floor Number</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 5" {...field} />
+                      <Input type="number" placeholder="e.g., 5" value={field.value || ""} onChange={field.onChange} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
