@@ -1270,6 +1270,21 @@ export default function ListingWizard() {
                       console.log('Form state:', form.formState);
                       console.log('Current form values:', form.getValues());
                       console.log('Form errors:', form.formState.errors);
+                      
+                      // Check if required fields are filled
+                      const values = form.getValues();
+                      const requiredFields = ['title', 'country', 'city', 'streetAddress', 'price'];
+                      const missingFields = requiredFields.filter(field => !values[field]);
+                      
+                      if (missingFields.length > 0) {
+                        console.log('Missing required fields:', missingFields);
+                        toast({
+                          title: "Missing Required Fields",
+                          description: `Please fill in: ${missingFields.join(', ')}`,
+                          variant: "destructive",
+                        });
+                        return;
+                      }
                     }}
                   >
                     {createPropertyMutation.isPending ? 'Publishing...' : 'Publish Listing'}
