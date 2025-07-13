@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 
 const listingSchema = insertPropertySchema.extend({
-  // Make some fields optional for draft saving
+  // Make some fields optional for draft saving and convert types for UI
   price: z.string().min(1, "Price is required"),
   totalArea: z.string().optional(),
   livingArea: z.string().optional(),
@@ -42,6 +42,14 @@ const listingSchema = insertPropertySchema.extend({
   longitude: z.string().optional(),
   maintenanceFees: z.string().optional(),
   propertyTaxes: z.string().optional(),
+  yearBuilt: z.string().optional(),
+  bedrooms: z.string().optional(),
+  bathrooms: z.string().optional(),
+  floors: z.string().optional(),
+  parkingSpaces: z.string().optional(),
+  floorNumber: z.string().optional(),
+}).omit({
+  agentId: true, // This will be added on the backend
 });
 
 type ListingFormData = z.infer<typeof listingSchema>;
@@ -84,6 +92,20 @@ export default function ListingWizard() {
       hasElevator: false,
       titleDeedAvailable: false,
       exclusiveListing: false,
+      // Add missing default values for number fields
+      yearBuilt: "",
+      bedrooms: "",
+      bathrooms: "",
+      floors: "",
+      parkingSpaces: "",
+      floorNumber: "",
+      totalArea: "",
+      livingArea: "",
+      lotSize: "",
+      maintenanceFees: "",
+      propertyTaxes: "",
+      latitude: "",
+      longitude: "",
     },
   });
 
@@ -97,6 +119,11 @@ export default function ListingWizard() {
         description: "Your listing is now live on the platform.",
       });
       queryClient.invalidateQueries({ queryKey: ['/api/agent/properties'] });
+      // Reset form
+      form.reset();
+      setCurrentStep(1);
+      setSelectedFeatures([]);
+      setSelectedNearbyPlaces([]);
       // Redirect to dashboard
       window.location.href = '/agent/dashboard';
     },
@@ -143,18 +170,24 @@ export default function ListingWizard() {
     console.log('Form errors:', form.formState.errors);
     
     try {
-      // Keep data as strings for backend validation, ensure required fields
+      // Process data properly for backend validation
       const processedData = {
         ...data,
         price: data.price.toString(),
         paymentFrequency: data.paymentFrequency || "one_time",
-        totalArea: data.totalArea || undefined,
-        livingArea: data.livingArea || undefined,
-        lotSize: data.lotSize || undefined,
-        latitude: data.latitude || undefined,
-        longitude: data.longitude || undefined,
-        maintenanceFees: data.maintenanceFees || undefined,
-        propertyTaxes: data.propertyTaxes || undefined,
+        totalArea: data.totalArea ? data.totalArea.toString() : undefined,
+        livingArea: data.livingArea ? data.livingArea.toString() : undefined,
+        lotSize: data.lotSize ? data.lotSize.toString() : undefined,
+        latitude: data.latitude ? data.latitude.toString() : undefined,
+        longitude: data.longitude ? data.longitude.toString() : undefined,
+        maintenanceFees: data.maintenanceFees ? data.maintenanceFees.toString() : undefined,
+        propertyTaxes: data.propertyTaxes ? data.propertyTaxes.toString() : undefined,
+        yearBuilt: data.yearBuilt ? parseInt(data.yearBuilt.toString()) : undefined,
+        bedrooms: data.bedrooms ? parseInt(data.bedrooms.toString()) : undefined,
+        bathrooms: data.bathrooms ? parseInt(data.bathrooms.toString()) : undefined,
+        floors: data.floors ? parseInt(data.floors.toString()) : undefined,
+        parkingSpaces: data.parkingSpaces ? parseInt(data.parkingSpaces.toString()) : undefined,
+        floorNumber: data.floorNumber ? parseInt(data.floorNumber.toString()) : undefined,
         features: selectedFeatures,
         nearbyPlaces: selectedNearbyPlaces,
       };
