@@ -138,6 +138,10 @@ export default function ListingWizard() {
   };
 
   const onSubmit = async (data: ListingFormData) => {
+    console.log('Form submission started with data:', data);
+    console.log('Current step:', currentStep);
+    console.log('Form errors:', form.formState.errors);
+    
     try {
       // Convert string numbers to actual numbers where needed
       const processedData = {
@@ -154,9 +158,15 @@ export default function ListingWizard() {
         nearbyPlaces: selectedNearbyPlaces,
       };
 
+      console.log('Processed data for submission:', processedData);
       await createPropertyMutation.mutateAsync(processedData);
     } catch (error) {
       console.error('Error submitting form:', error);
+      toast({
+        title: "Submission Error",
+        description: `Failed to submit: ${error}`,
+        variant: "destructive",
+      });
     }
   };
 
@@ -1151,6 +1161,11 @@ export default function ListingWizard() {
                 type="submit"
                 className="w-full bg-primary hover:bg-blue-700"
                 disabled={createPropertyMutation.isPending}
+                onClick={(e) => {
+                  console.log('Publish button clicked');
+                  console.log('Form is valid:', form.formState.isValid);
+                  console.log('Form errors:', form.formState.errors);
+                }}
               >
                 {createPropertyMutation.isPending ? 'Publishing...' : 'Publish Listing'}
               </Button>
