@@ -1265,6 +1265,12 @@ export default function ListingWizard() {
                     type="submit"
                     className="bg-primary hover:bg-blue-700"
                     disabled={createPropertyMutation.isPending}
+                    onClick={() => {
+                      console.log('Publish button clicked!');
+                      console.log('Form state:', form.formState);
+                      console.log('Current form values:', form.getValues());
+                      console.log('Form errors:', form.formState.errors);
+                    }}
                   >
                     {createPropertyMutation.isPending ? 'Publishing...' : 'Publish Listing'}
                   </Button>
