@@ -14,7 +14,8 @@ import {
   Eye,
   Mail,
   DollarSign,
-  TrendingUp
+  TrendingUp,
+  Edit
 } from "lucide-react";
 
 export default function AgentDashboard() {
@@ -265,11 +266,20 @@ export default function AgentDashboard() {
                             minimumFractionDigits: 0
                           }).format(property.price)}
                         </p>
-                        <Link href={`/property/${property.id}`}>
-                          <Button variant="outline" size="sm" className="mt-2">
-                            View
-                          </Button>
-                        </Link>
+                        <div className="flex gap-2 mt-2">
+                          <Link href={`/agent/edit-listing/${property.id}`}>
+                            <Button variant="outline" size="sm">
+                              <Edit className="w-4 h-4 mr-1" />
+                              Edit
+                            </Button>
+                          </Link>
+                          <Link href={`/property/${property.id}`}>
+                            <Button variant="outline" size="sm">
+                              <Eye className="w-4 h-4 mr-1" />
+                              View
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   ))}

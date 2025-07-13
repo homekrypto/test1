@@ -11,6 +11,7 @@ import Search from "@/pages/search";
 import PropertyDetail from "@/pages/property-detail";
 import AgentDashboard from "@/pages/agent/dashboard";
 import AddListing from "@/pages/agent/add-listing";
+import EditListing from "@/pages/agent/edit-listing";
 import Subscribe from "@/pages/agent/subscribe";
 
 function Router() {
@@ -31,6 +32,7 @@ function Router() {
           <Route path="/property/:id" component={PropertyDetail} />
           <Route path="/agent/dashboard" component={AgentDashboard} />
           <Route path="/agent/add-listing" component={AddListing} />
+          <Route path="/agent/edit-listing/:id" component={EditListing} />
           <Route path="/agent/subscribe" component={Subscribe} />
         </>
       )}

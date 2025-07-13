@@ -72,17 +72,64 @@ const steps = [
   { id: 9, title: "Review & Publish", icon: Eye },
 ];
 
-export default function ListingWizard() {
+interface ListingWizardProps {
+  editMode?: boolean;
+  initialData?: any;
+}
+
+export default function ListingWizard({ editMode = false, initialData }: ListingWizardProps) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [selectedNearbyPlaces, setSelectedNearbyPlaces] = useState<string[]>([]);
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>(
+    editMode && initialData?.features ? initialData.features : []
+  );
+  const [selectedNearbyPlaces, setSelectedNearbyPlaces] = useState<string[]>(
+    editMode && initialData?.nearbyPlaces ? initialData.nearbyPlaces : []
+  );
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const form = useForm<ListingFormData>({
     resolver: zodResolver(listingSchema),
     mode: "onBlur",
-    defaultValues: {
+    defaultValues: editMode && initialData ? {
+      title: initialData.title || "",
+      description: initialData.description || "",
+      listingType: initialData.listingType || "for_sale",
+      propertyType: initialData.propertyType || "apartment",
+      country: initialData.country || "",
+      city: initialData.city || "",
+      streetAddress: initialData.streetAddress || "",
+      stateProvince: initialData.stateProvince || "",
+      postalCode: initialData.postalCode || "",
+      price: initialData.price?.toString() || "",
+      currency: initialData.currency || "USD",
+      paymentFrequency: initialData.paymentFrequency || "one_time",
+      areaUnit: initialData.areaUnit || "sqm",
+      isNegotiable: initialData.isNegotiable || false,
+      acceptsCrypto: initialData.acceptsCrypto || false,
+      hasElevator: initialData.hasElevator || false,
+      titleDeedAvailable: initialData.titleDeedAvailable || false,
+      exclusiveListing: initialData.exclusiveListing || false,
+      yearBuilt: initialData.yearBuilt?.toString() || "",
+      bedrooms: initialData.bedrooms?.toString() || "",
+      bathrooms: initialData.bathrooms?.toString() || "",
+      floors: initialData.floors?.toString() || "",
+      parkingSpaces: initialData.parkingSpaces?.toString() || "",
+      floorNumber: initialData.floorNumber?.toString() || "",
+      totalArea: initialData.totalArea?.toString() || "",
+      livingArea: initialData.livingArea?.toString() || "",
+      lotSize: initialData.lotSize?.toString() || "",
+      maintenanceFees: initialData.maintenanceFees?.toString() || "",
+      propertyTaxes: initialData.propertyTaxes?.toString() || "",
+      latitude: initialData.latitude?.toString() || "",
+      longitude: initialData.longitude?.toString() || "",
+      furnishingStatus: initialData.furnishingStatus || "",
+      view: initialData.view || "",
+      agencyName: initialData.agencyName || "",
+      licenseNumber: initialData.licenseNumber || "",
+      phoneNumber: initialData.phoneNumber || "",
+      whatsappNumber: initialData.whatsappNumber || "",
+    } : {
       title: "",
       description: "",
       listingType: "for_sale",
@@ -125,25 +172,34 @@ export default function ListingWizard() {
 
   const createPropertyMutation = useMutation({
     mutationFn: async (data: any) => {
-      return apiRequest('POST', '/api/agent/properties', data);
+      if (editMode && initialData?.id) {
+        return apiRequest('PUT', `/api/agent/properties/${initialData.id}`, data);
+      } else {
+        return apiRequest('POST', '/api/agent/properties', data);
+      }
     },
     onSuccess: () => {
       toast({
-        title: "Property created successfully!",
-        description: "Your listing is now live on the platform.",
+        title: editMode ? "Property updated successfully!" : "Property created successfully!",
+        description: editMode ? "Your changes have been saved." : "Your listing is now live on the platform.",
       });
       queryClient.invalidateQueries({ queryKey: ['/api/agent/properties'] });
-      // Reset form
-      form.reset();
-      setCurrentStep(1);
-      setSelectedFeatures([]);
-      setSelectedNearbyPlaces([]);
+      if (editMode && initialData?.id) {
+        queryClient.invalidateQueries({ queryKey: [`/api/properties/${initialData.id}`] });
+      }
+      // Reset form for create mode only
+      if (!editMode) {
+        form.reset();
+        setCurrentStep(1);
+        setSelectedFeatures([]);
+        setSelectedNearbyPlaces([]);
+      }
       // Redirect to dashboard
       window.location.href = '/agent/dashboard';
     },
     onError: (error) => {
       toast({
-        title: "Failed to create property",
+        title: editMode ? "Failed to update property" : "Failed to create property",
         description: error.message,
         variant: "destructive",
       });
